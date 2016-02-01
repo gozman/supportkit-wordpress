@@ -6,8 +6,8 @@
  * @link       https://twitter.com/gozmike
  * @since      1.0.0
  *
- * @package    Supportkit
- * @subpackage Supportkit/admin
+ * @package    Smooch
+ * @subpackage Smooch/admin
  */
 
 /**
@@ -16,11 +16,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    Supportkit
- * @subpackage Supportkit/admin
- * @author     Mike Gozzo <mike@supportkit.io>
+ * @package    Smooch
+ * @subpackage Smooch/admin
+ * @author     Mike Gozzo <mike@smooch.io>
  */
-class Supportkit_Admin {
+class Smooch_Admin {
 
 	/**
 	 * The ID of this plugin.
@@ -65,15 +65,15 @@ class Supportkit_Admin {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Supportkit_Loader as all of the hooks are defined
+		 * defined in Smooch_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Supportkit_Loader will then create the relationship
+		 * The Smooch_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/supportkit-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/smooch-admin.css', array(), $this->version, 'all' );
 
 	}
 
@@ -88,15 +88,15 @@ class Supportkit_Admin {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Supportkit_Loader as all of the hooks are defined
+		 * defined in Smooch_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Supportkit_Loader will then create the relationship
+		 * The Smooch_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/supportkit-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/smooch-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
 
@@ -110,8 +110,8 @@ class Supportkit_Admin {
 		// add_options_page( $page_title, $menu_title, $capability, $menu_slug, $callback );
 
 		add_options_page(
-			apply_filters( $this->plugin_name . '-settings-page-title', __( 'SupportKit Settings', 'supportkit-wordpress' ) ),
-			apply_filters( $this->plugin_name . '-settings-menu-title', __( 'SupportKit', 'supportkit-wordpress' ) ),
+			apply_filters( $this->plugin_name . '-settings-page-title', __( 'Smooch Settings', 'smooch-wordpress' ) ),
+			apply_filters( $this->plugin_name . '-settings-menu-title', __( 'Smooch', 'smooch-wordpress' ) ),
 			'manage_options',
 			$this->plugin_name,
 			array( $this, 'options_page' )
@@ -154,7 +154,7 @@ class Supportkit_Admin {
 
 		add_settings_section(
 			$this->plugin_name . '-basic-info',
-			apply_filters( $this->plugin_name . '-display-section-title', __( 'Connecting SupportKit to your WordPress Site', 'supportkit-wordpress' ) ),
+			apply_filters( $this->plugin_name . '-display-section-title', __( 'Connecting Smooch to your WordPress Site', 'smooch-wordpress' ) ),
 			array( $this, 'display_options_section' ),
 			$this->plugin_name
 		);
@@ -163,7 +163,7 @@ class Supportkit_Admin {
 
 		add_settings_field(
 			'app-token',
-			apply_filters( $this->plugin_name . '-app-token-label', __( 'App Token', 'supportkit-wordpress' ) ),
+			apply_filters( $this->plugin_name . '-app-token-label', __( 'App Token', 'smooch-wordpress' ) ),
 			array( $this, 'app_token_field' ),
 			$this->plugin_name,
 			$this->plugin_name . '-basic-info'
@@ -180,8 +180,8 @@ class Supportkit_Admin {
 	 */
 	public function display_options_section( $params ) {
 		?> 
-		<p>SupportKit lets you speak to your web visitors or app users from your inbox, Slack, Help Scout or favourite CRM. This plugin makes connecting your WordPress site to SupportKit a breeze.</p>
-		<p>It's free to use on the web. Get an app token by logging in (or signing up for free) at <a href="https://app.supportkit.io">app.supportkit.io</a>. Paste this token into the field below and you'll be ready for action.</p>
+		<p>Smooch lets you speak to your web visitors or app users from your inbox, Slack, Help Scout or favourite CRM. This plugin makes connecting your WordPress site to Smooch a breeze.</p>
+		<p>It's free to use on the web. Get an app token by logging in (or signing up for free) at <a href="https://app.smooch.io">app.smooch.io</a>. Paste this token into the field below and you'll be ready for action.</p>
 		<?php
 	} // display_options_section()
 
@@ -224,7 +224,7 @@ class Supportkit_Admin {
 
 			if ( $valid['app-token'] != $input['app-token'] ) {
 
-				add_settings_error( 'app-token', 'app-token-error', __( 'App token error.', 'supportkit-wordpress' ), 'error' );
+				add_settings_error( 'app-token', 'app-token-error', __( 'App token error.', 'smooch-wordpress' ), 'error' );
 
 			}
 
