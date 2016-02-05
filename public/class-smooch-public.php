@@ -6,8 +6,8 @@
  * @link       https://twitter.com/gozmike
  * @since      1.0.0
  *
- * @package    Supportkit
- * @subpackage Supportkit/public
+ * @package    Smooch
+ * @subpackage Smooch/public
  */
 
 /**
@@ -16,11 +16,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    Supportkit
- * @subpackage Supportkit/public
- * @author     Mike Gozzo <mike@supportkit.io>
+ * @package    Smooch
+ * @subpackage Smooch/public
+ * @author     Mike Gozzo <mike@smooch.io>
  */
-class Supportkit_Public {
+class Smooch_Public {
 
 	/**
 	 * The ID of this plugin.
@@ -65,15 +65,15 @@ class Supportkit_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Supportkit_Loader as all of the hooks are defined
+		 * defined in Smooch_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Supportkit_Loader will then create the relationship
+		 * The Smooch_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/supportkit-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/smooch-public.css', array(), $this->version, 'all' );
 
 	}
 
@@ -88,15 +88,15 @@ class Supportkit_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Supportkit_Loader as all of the hooks are defined
+		 * defined in Smooch_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Supportkit_Loader will then create the relationship
+		 * The Smooch_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		wp_enqueue_script( 'SupportKit-CDN', 'https://cdn.supportkit.io/supportkit.min.js', array( 'jquery' ), $this->version, true );
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/supportkit-public.js', array( 'SupportKit-CDN' ), $this->version, false );
+		wp_enqueue_script( 'Smooch-CDN', 'https://cdn.smooch.io/smooch.min.js', array( 'jquery' ), $this->version, true );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/smooch-public.js', array( 'Smooch-CDN' ), $this->version, false );
 	}
 
 	/**
@@ -110,19 +110,27 @@ class Supportkit_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Supportkit_Loader as all of the hooks are defined
+		 * defined in Smooch_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Supportkit_Loader will then create the relationship
+		 * The Smooch_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		$options = get_option( $this->plugin_name . '-options' );
-
-		?>
+		$options = get_option( $this->plugin_name . '-options' );	?>
 		<!-- SK Init -->
-		<script>SupportKit.init({appToken: '<?php echo($options['app-token']);?>'});</script>";
+		<script>Smooch.init(
+			{
+				appToken: '<?php echo($options['app-token']);?>',
+			    customText: {
+        			headerText: '<?php echo($options['header-text']);?>',
+        			inputPlaceholder: '<?php echo($options['input-placeholder']);?>',
+        			sendButtonText: '<?php echo($options['send-button-text']);?>',
+        			introText: '<?php echo($options['intro-text']);?>'
+    			}
+			});
+		</script>;
+
 		<?php
 	}	
-
 }

@@ -9,8 +9,8 @@
  * @link       https://twitter.com/gozmike
  * @since      1.0.0
  *
- * @package    Supportkit
- * @subpackage Supportkit/includes
+ * @package    Smooch
+ * @subpackage Smooch/includes
  */
 
 /**
@@ -20,11 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    Supportkit
- * @subpackage Supportkit/includes
- * @author     Mike Gozzo <mike@supportkit.io>
+ * @package    Smooch
+ * @subpackage Smooch/includes
+ * @author     Mike Gozzo <mike@smooch.io>
  */
-class Supportkit_i18n {
+class Smooch_i18n {
 
 	/**
 	 * The domain specified for this plugin.

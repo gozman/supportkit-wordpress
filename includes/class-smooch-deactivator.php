@@ -6,8 +6,8 @@
  * @link       https://twitter.com/gozmike
  * @since      1.0.0
  *
- * @package    Supportkit
- * @subpackage Supportkit/includes
+ * @package    Smooch
+ * @subpackage Smooch/includes
  */
 
 /**
@@ -16,11 +16,11 @@
  * This class defines all code necessary to run during the plugin's deactivation.
  *
  * @since      1.0.0
- * @package    Supportkit
- * @subpackage Supportkit/includes
- * @author     Mike Gozzo <mike@supportkit.io>
+ * @package    Smooch
+ * @subpackage Smooch/includes
+ * @author     Mike Gozzo <mike@smooch.io>
  */
-class Supportkit_Deactivator {
+class Smooch_Deactivator {
 
 	/**
 	 * Short Description. (use period)
