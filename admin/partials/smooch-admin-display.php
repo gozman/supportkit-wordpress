@@ -8,8 +8,8 @@
  * @link       https://twitter.com/gozmike
  * @since      1.0.0
  *
- * @package    Supportkit
- * @subpackage Supportkit/admin/partials
+ * @package    Smooch
+ * @subpackage Smooch/admin/partials
  */
 ?>
 

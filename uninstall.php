@@ -22,7 +22,7 @@
  * @link       https://twitter.com/gozmike
  * @since      1.0.0
  *
- * @package    Supportkit
+ * @package    Smooch
  */
 
 // If uninstall not called from WordPress, then exit.

@@ -6,8 +6,8 @@
  * @link       https://twitter.com/gozmike
  * @since      1.0.0
  *
- * @package    Supportkit
- * @subpackage Supportkit/includes
+ * @package    Smooch
+ * @subpackage Smooch/includes
  */
 
 /**
@@ -17,11 +17,11 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Supportkit
- * @subpackage Supportkit/includes
- * @author     Mike Gozzo <mike@supportkit.io>
+ * @package    Smooch
+ * @subpackage Smooch/includes
+ * @author     Mike Gozzo <mike@smooch.io>
  */
-class Supportkit_Loader {
+class Smooch_Loader {
 
 	/**
 	 * The array of actions registered with WordPress.
