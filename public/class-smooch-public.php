@@ -150,7 +150,7 @@ class Smooch_Public {
         			introText: decodeEntities('<?php echo(htmlentities($options['intro-text'], ENT_QUOTES));?>')
     			}
 			});
-		</script>;
+		</script>
 
 		<?php
 	}
