@@ -4,7 +4,7 @@
  * The public-facing functionality of the plugin.
  *
  * @link       https://twitter.com/smoochlabs
- * @since      1.0.0
+ * @since      1.1.0
  *
  * @package    Smooch
  * @subpackage Smooch/public
@@ -105,6 +105,17 @@ class Smooch_Public {
 	 * @since    1.0.0
 	 */
 	public function init_sk() {
+		global $current_user;
+
+		/*
+		Getting user data logged
+		*/
+
+		get_currentuserinfo();
+
+		$givenName = $current_user->user_firstname;
+		$surname = $current_user->user_lastname;
+		$email = $current_user->user_email;
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -143,6 +154,10 @@ class Smooch_Public {
 		Smooch.init(
 			{
 				appToken: decodeEntities('<?php echo(htmlentities($options['app-token'], ENT_QUOTES));?>'),
+				givenName: decodeEntities('<?php echo(htmlentities($givenName, ENT_QUOTES));?>'),
+    			surname: decodeEntities('<?php echo(htmlentities($surname, ENT_QUOTES));?>'),
+    			email: decodeEntities('<?php echo(htmlentities($email, ENT_QUOTES));?>'),
+    			emailCaptureEnabled: true,
 			    customText: {
         			headerText: decodeEntities('<?php echo(htmlentities($options['header-text'], ENT_QUOTES));?>'),
         			inputPlaceholder: decodeEntities('<?php echo(htmlentities($options['input-placeholder'], ENT_QUOTES));?>'),

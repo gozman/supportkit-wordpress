@@ -9,13 +9,13 @@
  * that starts the plugin.
  *
  * @link              https://twitter.com/smoochlabs
- * @since             1.0.0
+ * @since             1.1.0
  * @package           Smooch
  *
  * @wordpress-plugin
  * Plugin Name:       Smooch
  * Plugin URI:        https://smooch.io
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Smooch lets you speak to your web visitors from your inbox, Slack, Front, Help Scout or favorite CRM. 
  * Version:           1.0.0
  * Author:            Smooch
  * Author URI:        https://twitter.com/smoochlabs
