@@ -1,9 +1,9 @@
 === Smooch.io - Live Chat Messaging for your Website ===
-Contributors: smoochio
+Contributors: smoochio, valeriosza
 Tags: live chat, messaging, support, Slack, communication
 Requires at least: 3.0.1
-Tested up to: 4.5
-Stable tag: 1.0.0
+Tested up to: 4.6
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -56,6 +56,10 @@ If you want to add your little something to this plugin, visit our [github page]
 4. Configure the widget from the plugin settings
 
 == Changelog ==
+
+= 1.1.0 =
+* Now saves the user name logged on to WordPress automatically.
+* Asks the user email
 
 = 1.0 =
 * First stable version
