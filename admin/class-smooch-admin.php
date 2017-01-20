@@ -4,7 +4,7 @@
  * The admin-specific functionality of the plugin.
  *
  * @link       https://twitter.com/smoochlabs
- * @since      1.0.0
+ * @since      1.1.2
  *
  * @package    Smooch
  * @subpackage Smooch/admin
@@ -300,7 +300,7 @@ class Smooch_Admin {
 	public function intro_text_field() {
 
 		$options 	= get_option( $this->plugin_name . '-options' );
-		$option 	= 'This is the beginning of your conversation.<br/> Ask us anything!';
+		$option 	= 'This is the beginning of your conversation. Ask us anything!';
 
 		if ( ! empty( $options['intro-text'] ) ) {
 			$option = $options['intro-text'];

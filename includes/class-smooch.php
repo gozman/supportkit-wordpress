@@ -69,7 +69,7 @@ class Smooch {
 	public function __construct() {
 
 		$this->plugin_name = 'smooch';
-		$this->version = '1.0.0';
+		$this->version = '1.1.2';
 
 		$this->load_dependencies();
 		$this->set_locale();
