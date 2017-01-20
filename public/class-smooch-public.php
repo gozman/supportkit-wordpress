@@ -95,8 +95,6 @@ class Smooch_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		wp_enqueue_script( 'Smooch-CDN', 'https://cdn.smooch.io/smooch.min.js', array( 'jquery' ), $this->version, true );
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/smooch-public.js', array( 'Smooch-CDN' ), $this->version, false );
 	}
 
 	/**
@@ -140,16 +138,19 @@ class Smooch_Public {
 		  return decodeHTMLEntities;
 		})();
 
-		Smooch.init(
-			{
-				appToken: decodeEntities('<?php echo(htmlentities($options['app-token'], ENT_QUOTES));?>'),
-			    customText: {
-        			headerText: decodeEntities('<?php echo(htmlentities($options['header-text'], ENT_QUOTES));?>'),
-        			inputPlaceholder: decodeEntities('<?php echo(htmlentities($options['input-placeholder'], ENT_QUOTES));?>'),
-        			sendButtonText: decodeEntities('<?php echo(htmlentities($options['send-button-text'], ENT_QUOTES));?>'),
-        			introductionText: decodeEntities('<?php echo(htmlentities($options['intro-text'], ENT_QUOTES));?>')
-    			}
-			});
+        function loadScript(src, callback) { var s, r, t; r = false; s = document.createElement('script'); s.type = 'text/javascript'; s.src = src; s.onload = s.onreadystatechange = function() { if ( !r && (!this.readyState || this.readyState == 'complete') ) { r = true; callback(); } }; t = document.getElementsByTagName('script')[0]; t.parentNode.insertBefore(s, t); }
+        loadScript('https://cdn.smooch.io/smooch.min.js', function() {
+    		Smooch.init(
+    			{
+    				appToken: decodeEntities('<?php echo(htmlentities($options['app-token'], ENT_QUOTES));?>'),
+    			    customText: {
+            			headerText: decodeEntities('<?php echo(htmlentities($options['header-text'], ENT_QUOTES));?>'),
+            			inputPlaceholder: decodeEntities('<?php echo(htmlentities($options['input-placeholder'], ENT_QUOTES));?>'),
+            			sendButtonText: decodeEntities('<?php echo(htmlentities($options['send-button-text'], ENT_QUOTES));?>'),
+            			introductionText: decodeEntities('<?php echo(htmlentities($options['intro-text'], ENT_QUOTES));?>')
+        			}
+    			});
+        });
 		</script>
 
 		<?php
