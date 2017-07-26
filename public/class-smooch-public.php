@@ -110,65 +110,39 @@ class Smooch_Public {
 		*/
 
 		get_currentuserinfo();
-
-		$givenName = $current_user->user_firstname;
-		$surname = $current_user->user_lastname;
-		$email = $current_user->user_email;
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Smooch_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Smooch_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-		$options = get_option( $this->plugin_name . '-options' );	?>
+		
+		$options = get_option( $this->plugin_name . '-options' );
+		
+		$initOptions = array(
+			'appToken'             => $options['app-token'],
+			'emailCaptureEnabled'  => true,
+			'customText' => array(
+				'headerText'       => $options['header-text'],
+				'inputPlaceholder' => $options['input-placeholder'],
+				'sendButtonText'   => $options['send-button-text'],
+				'introductionText' => $options['intro-text'],
+				'introAppText'     => $options['intro-app-text'],
+			),
+		);
+		
+		if($givenName = $current_user->user_firstname) {
+			$initOptions['givenName'] = $givenName;
+		}
+		if($surname = $current_user->user_lastname) {
+			$initOptions['surname'] = $surname;
+		}
+		if($email = $current_user->user_email) {
+			$initOptions['email'] = $email;
+		}
+		
+		?>
 		<!-- SK Init -->
 		<script>
-		var decodeEntities = (function() {
-		  // this prevents any overhead from creating the object each time
-		  var element = document.createElement('div');
-
-		  function decodeHTMLEntities (str) {
-		    if(str && typeof str === 'string') {
-		      // strip script/html tags
-		      str = str.replace(/<script[^>]*>([\S\s]*?)<\/script>/gmi, '');
-		      str = str.replace(/<\/?\w(?:[^"'>]|"[^"]*"|'[^']*')*>/gmi, '');
-		      element.innerHTML = str;
-		      str = element.textContent;
-		      element.textContent = '';
-		    }
-
-		    return str;
-		  }
-
-		  return decodeHTMLEntities;
-		})();
-
-        function loadScript(src, callback) { var s, r, t; r = false; s = document.createElement('script'); s.type = 'text/javascript'; s.src = src; s.onload = s.onreadystatechange = function() { if ( !r && (!this.readyState || this.readyState == 'complete') ) { r = true; callback(); } }; t = document.getElementsByTagName('script')[0]; t.parentNode.insertBefore(s, t); }
-        loadScript('https://cdn.smooch.io/smooch.min.js', function() {
-    		Smooch.init(
-    			{
-						appToken: decodeEntities('<?php echo(htmlentities($options['app-token'], ENT_QUOTES));?>'),
-						givenName: decodeEntities('<?php echo(htmlentities($givenName, ENT_QUOTES));?>'),
-		    			surname: decodeEntities('<?php echo(htmlentities($surname, ENT_QUOTES));?>'),
-		    			email: decodeEntities('<?php echo(htmlentities($email, ENT_QUOTES));?>'),
-		    			emailCaptureEnabled: true,
-					    customText: {
-		        			headerText: decodeEntities('<?php echo(htmlentities($options['header-text'], ENT_QUOTES));?>'),
-		        			inputPlaceholder: decodeEntities('<?php echo(htmlentities($options['input-placeholder'], ENT_QUOTES));?>'),
-		        			sendButtonText: decodeEntities('<?php echo(htmlentities($options['send-button-text'], ENT_QUOTES));?>'),
-		        			introductionText: decodeEntities('<?php echo(htmlentities($options['intro-text'], ENT_QUOTES));?>'),
-									introAppText: decodeEntities('<?php echo(htmlentities($options['intro-app-text'], ENT_QUOTES));?>')
-		    			}
-    			});
-        });
+			function loadScript(src, callback) { var s, r, t; r = false; s = document.createElement('script'); s.type = 'text/javascript'; s.src = src; s.onload = s.onreadystatechange = function() { if ( !r && (!this.readyState || this.readyState == 'complete') ) { r = true; callback(); } }; t = document.getElementsByTagName('script')[0]; t.parentNode.insertBefore(s, t); }
+			loadScript('https://cdn.smooch.io/smooch.min.js', function() {
+				Smooch.init(<?php echo(json_encode($initOptions));?>);
+			});
 		</script>
-
 		<?php
 	}
 }
